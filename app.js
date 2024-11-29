@@ -6,6 +6,8 @@ const bodyParser = require("body-parser");
 const authRoutes = require("./routes/authRoutes");
 const pagesRoutes = require("./routes/pages");
 const adminRoutes = require("./routes/admin");
+const transactionRoutes = require("./routes/transactionRoutes");
+const dashboardRoutes = require("./routes/dashboardRoutes");
 
 // Initialize app
 const app = express();
@@ -26,6 +28,8 @@ app.use("/", require("./routes/index"));
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/", pagesRoutes); // Use the pages routes
+app.use("/api/transactions", transactionRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 // MongoDB Connection
 mongoose

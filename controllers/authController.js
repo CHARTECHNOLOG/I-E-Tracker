@@ -47,7 +47,7 @@ const registerUser = async (req, res) => {
       expiresIn: process.env.JWT_EXPIRES_IN,
     });
 
-    res.status(201).json({ msg: "User registered successfully" }, { token });
+    res.status(201).json({ msg: "User registered successfully" });
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Server error");

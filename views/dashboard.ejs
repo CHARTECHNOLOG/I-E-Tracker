@@ -1,3 +1,56 @@
-<h1>Welcome to your Dashboard</h1>
-<p>Welcome back, user!</p>
-<a href="/logout">Logout</a>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Dashboard</h1>
+      <a href="/">Logout</a>
+    </header>
+    <main>
+      <section id="summary">
+        <h2>Financial Summary</h2>
+        <p id="income">Income: $<span>0</span></p>
+        <p id="expenses">Expenses: $<span>0</span></p>
+      </section>
+      <section id="chart">
+        <canvas id="financialChart"></canvas>
+      </section>
+    </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        const response = await fetch("/api/dashboard", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+
+        const data = await response.json();
+        document.getElementById("income").querySelector("span").textContent =
+          data.income;
+        document.getElementById("expenses").querySelector("span").textContent =
+          data.expenses;
+
+        // Render Chart
+        const ctx = document.getElementById("financialChart").getContext("2d");
+        new Chart(ctx, {
+          type: "pie",
+          data: {
+            labels: ["Income", "Expenses"],
+            datasets: [
+              {
+                data: [data.income, data.expenses],
+                backgroundColor: ["#4caf50", "#f44336"],
+              },
+            ],
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

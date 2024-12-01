@@ -87,7 +87,7 @@ The web application will track **both income and expenses** of a company. It wil
 
 2. **Transaction Management:**
 
-   - Create **Income** and **Expense** models in the database with fields such as category, amount, date, description, status, and user.
+   - Create **Transaction** model in the database with fields such as department, type, category, amount, date, description, status, receipt and user.
    - API endpoints to create, update, delete, and retrieve income/expense transactions.
    - Categorize transactions by department, type (income or expense), and status (approved, pending).
 
@@ -151,7 +151,7 @@ The web application will track **both income and expenses** of a company. It wil
 
 #### **Phase 2: Transaction Management**
 
-- Create models for **Income** and **Expense** and set up API endpoints for managing transactions.
+- Create models for **Transactions** and set up API endpoints for managing transactions.
 - Build the frontend for adding, viewing, and editing income/expense transactions.
 
 #### **Phase 3: Income & Expense Analysis**

@@ -1,12 +1,12 @@
-const checkRole = (roles) => (req, res, next) => {
-  if (!req.user || !req.user.roles) {
-    return res.status(403).json({ msg: "Access denied" });
-  }
-
-  if (req.user.roles !== roles) {
-    return res.status(403).json({ msg: "You do not have permission" });
-  }
-  next();
+const roleMiddleware = (roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return res
+        .status(403)
+        .json({ msg: "Forbidden: You don't have the right role" });
+    }
+    next();
+  };
 };
 
-module.exports = checkRole;
+module.exports = roleMiddleware;

@@ -1,0 +1,17 @@
+// Example using Chart.js const ctx =
+document.getElementById("incomeExpenseChart").getContext("2d"); const data = {
+labels: ["Income", "Expenses"], datasets: [ { label: "Income vs. Expenses",
+data: [5000, 3000], // Replace with fetched data backgroundColor: ["#4caf50",
+"#f44336"], }, ], }; new Chart(ctx, { type: "bar", data, options: { responsive:
+true, plugins: { legend: { display: true }, title: { display: true, text:
+"Income vs. Expenses" }, }, }, });
+
+<!-- Category BreakDown -->
+const categoryCtx = document.getElementById("categoryChart").getContext("2d");
+const categoryData = { labels: ["Category A", "Category B", "Category C"], //
+Replace with categories datasets: [ { label: "Income", data: [2000, 1000, 1500],
+// Income data backgroundColor: "#4caf50", }, { label: "Expenses", data: [1800,
+1200, 1600], // Expense data backgroundColor: "#f44336", }, ], }; new
+Chart(categoryCtx, { type: "bar", data: categoryData, options: { responsive:
+true, plugins: { legend: { display: true }, title: { display: true, text:
+"Category Breakdown" }, }, }, });

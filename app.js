@@ -5,9 +5,11 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const authRoutes = require("./routes/authRoutes");
 const pagesRoutes = require("./routes/pages");
-const adminRoutes = require("./routes/admin");
+const protectedRoutes = require("./routes/protectedRoutes");
+const adminRoutes = require("./routes/adminRoute");
 const transactionRoutes = require("./routes/transactionRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
+const budgetRoutes = require("./routes/budgetRoutes");
 
 // Initialize app
 const app = express();
@@ -26,10 +28,13 @@ app.set("views", path.join(__dirname, "views"));
 // Routes Placeholder
 app.use("/", require("./routes/index"));
 app.use("/api/auth", authRoutes);
-app.use("/api/admin", adminRoutes);
+app.use("/protected", protectedRoutes);
+app.use("/api", adminRoutes);
 app.use("/", pagesRoutes); // Use the pages routes
 app.use("/api/transactions", transactionRoutes);
+app.use("/api", budgetRoutes);
 app.use("/api/dashboard", dashboardRoutes);
+app.use("/uploads", express.static("uploads"));
 
 // MongoDB Connection
 mongoose

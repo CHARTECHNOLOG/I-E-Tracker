@@ -9,8 +9,14 @@ const {
   forgotPassword,
   resetPassword,
   changePassword,
+  logoutUser,
+  viewProfile,
+  updateProfile,
+  allUser,
+  allUserUpdate,
 } = require("../controllers/authController");
 const authenticateToken = require("../middleware/authMiddleware");
+const roleMiddleware = require("../middleware/roleMiddleware");
 
 // Register route
 router.post(
@@ -47,4 +53,21 @@ router.post("/reset-password/:token", resetPassword);
 // Change password route
 router.put("/change-password", authenticateToken, changePassword);
 
+// Logout Route
+router.post("/logout", authenticateToken, logoutUser);
+
+// Profile route (accessible by any authenticated user)
+router.get("/profile", authenticateToken, viewProfile);
+router.put("/profile", authenticateToken, updateProfile);
+
+// View all users (Admin-only route)
+router.get("/admin/users", authenticateToken, roleMiddleware("Admin"), allUser);
+
+// Update a user's role (Admin-only route)
+router.put(
+  "/admin/update-role/:id",
+  authenticateToken,
+  roleMiddleware("Admin"),
+  allUserUpdate
+);
 module.exports = router;

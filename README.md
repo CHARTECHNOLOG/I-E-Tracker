@@ -181,17 +181,6 @@ The web application will track **both income and expenses** of a company. It wil
 
 ---
 
-### **6. Advanced Features (Hackathon Ideas)**
-
-1. **AI-Powered Financial Insights**: Use AI to analyze spending patterns and suggest optimizations.
-2. **Multi-Currency Support**: Track income and expenses in different currencies, ideal for international companies.
-3. **Real-Time Notifications**: Implement push notifications for new expenses or income submissions.
-4. **Mobile App**: Build a mobile version using **React Native** for on-the-go tracking.
-5. **Integration with Accounting Software**: Sync data with tools like **QuickBooks**, **Xero**, or **Stripe**.
-6. **Customizable Dashboards**: Let admins and team leads customize their dashboards to see the most relevant financial data.
-
----
-
 ### **Conclusion**
 
 This **Income and Expenses Tracker** project will provide companies with an effective tool to monitor their finances, manage income and expenses, and track budgets. It will offer detailed reports, visualizations, and an approval workflow to ensure smooth financial operations. By integrating advanced analytics and AI-powered insights, it will stand out in hackathons and provide significant value to companies in managing their finances efficiently.
